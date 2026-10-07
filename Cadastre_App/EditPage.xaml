@@ -1,0 +1,73 @@
+﻿    <Page x:Class="Cadastre_App.EditPage"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+          xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+          xmlns:local="clr-namespace:Cadastre_App"
+          mc:Ignorable="d" 
+          d:DesignHeight="500" d:DesignWidth="1200"
+          Title="EditPage">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Background="Green" Padding="5" Margin="0,0,0,5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <TextBlock Text="Тип:" VerticalAlignment="Center" Margin="5,0"/>
+                    <ComboBox x:Name="cbTypeFilter" Width="150" Margin="5,0" 
+                              DisplayMemberPath="TypeName" SelectionChanged="CbTypeFilter_SelectionChanged" />
+                    <TextBlock Text="Кад. номер:" VerticalAlignment="Center" Margin="15,0,5,0"/>
+                    <TextBox x:Name="txtSearchCadastral" Width="150" Margin="5,0"/>
+                    <Button x:Name="btnSearch" Content="Найти" Width="80" Margin="5,0" Click="BtnSearch_Click"/>
+                    <Button x:Name="btnResetFilter" Content="Сбросить фильтр" Width="110" Margin="5,0" Click="BtnResetFilter_Click"/>
+                </StackPanel>
+            </Border>
+
+            <DataGrid x:Name="DGridEdit" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Кадастровый номер" Binding="{Binding CadastralNumber}" Width="130"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" Width="150"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Площадь" Binding="{Binding Area}" Width="70"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Этажи" Binding="{Binding Floors}" Width="60"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Стоимость" Binding="{Binding CadastralValue}" Width="80"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Тип" Binding="{Binding ObjectTypes.TypeName}" Width="100"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Владелец" Width="170">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                        <Binding Path="Owners.LastName"/>
+                                        <Binding Path="Owners.FirstName"/>
+                                        <Binding Path="Owners.MiddleName"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Owners.Phone}" Width="100"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="60"></DataGridTextColumn>
+                    <DataGridTemplateColumn Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Редактировать" Name="BtnEdit" Click="BtnEdit_Click" Background="Yellow" Tag="{Binding ID}"></Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Удалить" Name="BtnDelete" Click="BtnDelete_Click" Background="red" Tag="{Binding ID}"></Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+    </Page>

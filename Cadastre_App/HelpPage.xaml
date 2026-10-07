@@ -1,0 +1,21 @@
+﻿<Page x:Class="Cadastre_App.HelpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Справка">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Справка" FontSize="20" FontWeight="Bold" Margin="0,0,0,15" TextAlignment="Center"/>
+            <TextBlock Text="? 1. Авторизация" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="• Для входа в систему используйте логин и пароль, полученные от администратора. Роль «Администратор» предоставляет полный доступ, роль «Пользователь» – только просмотр." TextWrapping="Wrap" Margin="10,0,0,10"/>
+            <TextBlock Text="? 2. Просмотр и управление объектами" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="• Список объектов отображается на главной странице.«Список»." TextWrapping="Wrap" Margin="10,0,0,5"/>
+            <TextBlock Text="• Для добавления нового объекта нажмите «Добавить» и заполните форму." TextWrapping="Wrap" Margin="10,0,0,5"/>
+            <TextBlock Text="• Для редактирования нажмите кнопку «Редактировать» в строке объекта." TextWrapping="Wrap" Margin="10,0,0,5"/>
+            <TextBlock Text="• Для удаления нажмите «Удалить» и подтвердите действие." TextWrapping="Wrap" Margin="10,0,0,10"/>
+            <TextBlock Text="? 3. Фильтрация и поиск" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="• На странице списка можно отфильтровать объекты по типу, а также выполнить поиск по кадастровому номеру." TextWrapping="Wrap" Margin="10,0,0,10"/>
+            <TextBlock Text="? 4. Управление пользователями (только для администратора)" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="• На странице «Управление пользователями» можно добавлять/удалять пользователей." TextWrapping="Wrap" Margin="10,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
